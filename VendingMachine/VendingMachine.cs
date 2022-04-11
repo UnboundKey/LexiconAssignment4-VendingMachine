@@ -22,6 +22,7 @@ namespace VendingMachine
         {
             foreach (Product product in _availableProducts)
             {
+                // Check if a product of a specific name exists and can be purchased.
                 if (productname.ToLower() == product.Name.ToLower() && MoneyPool >= product.GetPrice())
                 {
                     MoneyPool -= product.GetPrice();
@@ -57,17 +58,27 @@ namespace VendingMachine
             //Check against largest denom first
             for (int i = _acceptedDenominations.Length - 1; i >= 0; i--)
             {
-                // If 
+                // Check if there are any of a specific denomination
                 if ((MoneyPool / _acceptedDenominations[i]) >= 0)
                 {
+                    // Get amount of a specific denomination in the MoneyPool and round down to a whole number
                     var denomAmount = Math.Floor((double) (MoneyPool / _acceptedDenominations[i]));
-                    
+                    // Store the denomination amount for later
                     returnDenomAmount[i] = (int) denomAmount;
+                    // Remove the money counted from the MoneyPool
                     MoneyPool -= (int)(denomAmount * _acceptedDenominations[i]);
                 }
 
             }
-            Console.WriteLine($"1000s: {returnDenomAmount[^1]},500s: {returnDenomAmount[^2]}, 100s: {returnDenomAmount[^3]}, 20s: {returnDenomAmount[^4]}");
+
+            Console.WriteLine($"1s: {returnDenomAmount[0]}, " +
+                              $" 5s: {returnDenomAmount[1]}, " +
+                              $" 10s: {returnDenomAmount[2]}, " +
+                              $" 20s: {returnDenomAmount[3]}, " +
+                              $" 50s: {returnDenomAmount[4]}, " +
+                              $" 100s: {returnDenomAmount[5]}, " +
+                              $" 500s: {returnDenomAmount[6]}, " +
+                              $" 1000s: {returnDenomAmount[7]}, ");
             return returnDenomAmount;
         }
     }

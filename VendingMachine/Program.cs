@@ -8,7 +8,9 @@ namespace VendingMachine
         private static VendingMachine _vender = new VendingMachine();
         static void Main(string[] args)
         {
-            _vender.InsertMoney(50,2);
+            _vender.InsertMoney(10,3);
+            _vender.Purchase("fanta");
+            _vender.EndTransaction();
         }
     }
 }
