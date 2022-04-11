@@ -2,8 +2,8 @@
 {
     public abstract class Product
     {
-        private int price;
-        private string description;
+        protected int price;
+        protected string description;
 
         protected Product(int price, string description)
         {
