@@ -2,14 +2,14 @@
 
 namespace VendingMachine.Products
 {
-    public class ProductDrink : Product
+    public class ProductTech : Product
     {
-        private double _volume;
+        private string _brand;
         private string UseText;
         private string ExamineText;
-        public ProductDrink(string name, int price, string description, double volume, string useText) : base(name, price, description)
+        public ProductTech(string name, int price, string description, string brand, string useText) : base(name, price, description)
         {
-            _volume = volume;
+            _brand = brand;
             UseText = useText;
             
         }
@@ -21,7 +21,7 @@ namespace VendingMachine.Products
 
         public override void Examine()
         {
-            ExamineText = base.ExamineText + $", CL {_volume}";
+            ExamineText = base.ExamineText + $", Brand: {_brand}";
             Console.WriteLine(ExamineText);
         }
     }

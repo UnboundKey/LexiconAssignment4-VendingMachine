@@ -68,6 +68,41 @@ namespace VendingMachine.Tests
             Assert.Equal(expectedReturn,vendingMachine.EndTransaction());
             
         }
+
+        [Fact]
+        public void Purchase_EnoughMoney()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            
+            vendingMachine.InsertMoney(500,2);
+            var moneyBefore = vendingMachine.MoneyPool;
+            var product = vendingMachine.Purchase("twix");
+
+            Assert.NotNull(product);
+            Assert.Equal(moneyBefore - product.GetPrice(), vendingMachine.MoneyPool);
+        }
+        
+        [Fact]
+        public void Purchase_NotEnoughMoney()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            
+            vendingMachine.InsertMoney(1,2);
+            
+            var product = vendingMachine.Purchase("twix");
+            var resultArray  = vendingMachine.EndTransaction();
+            
+            Assert.Null(product);
+        }
+
+        [Fact]
+        public void Examine_Product()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.InsertMoney(1000,10);
+            var fanta = vendingMachine.Purchase("fanta");
+            fanta.Examine();
+        }
         
     }
 }

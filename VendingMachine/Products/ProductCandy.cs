@@ -6,20 +6,23 @@ namespace VendingMachine.Products
     {
         private double _weight;
         private string UseText;
-        public ProductCandy(int price, string description, double weight, string useText) : base(price, description)
+        private string ExamineText;
+        public ProductCandy(string name, int price, string description, double weight, string useText) : base(name, price, description)
         {
-            this._weight = weight;
+            _weight = weight;
             UseText = useText;
-        }
-        
-        public new void Examine()
-        {
-            System.Console.WriteLine($"Price: {price}, Description: {description}, Kilogrammes: {_weight}");
+            
         }
 
-        public new string Use()
+        public override void Use()
         {
-            return UseText;
+            Console.WriteLine(UseText);
+        }
+
+        public override void Examine()
+        {
+            ExamineText = base.ExamineText + $", Weight {_weight}";
+            Console.WriteLine(ExamineText);
         }
     }
 }

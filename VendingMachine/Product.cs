@@ -1,14 +1,20 @@
-﻿namespace VendingMachine
+﻿using System;
+
+namespace VendingMachine
 {
     public abstract class Product
     {
+        public string Name { get; private set; }
         protected int price;
         protected string description;
+        public string ExamineText;
 
-        protected Product(int price, string description)
+        protected Product(string name, int price, string description)
         {
             this.price = price;
             this.description = description;
+            Name = name;
+            ExamineText = $"Name: {this.Name}, Price: {this.price}, Description: {this.description}";
         }
 
         public int GetPrice()
@@ -16,12 +22,12 @@
             return price;
         }
 
-        public void Examine()
+        public virtual void Examine()
         {
-            System.Console.WriteLine($"Price: {price}, Description: {description}");
+            Console.WriteLine(ExamineText);
         }
 
-        public void Use()
+        public virtual void Use()
         {
             
         }
