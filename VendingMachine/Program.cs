@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using VendingMachine.Products;
 
 namespace VendingMachine
 {
     class Program
     {
-        private static VendingMachine vender;
+        private static VendingMachine _vender = new VendingMachine();
         static void Main(string[] args)
         {
-            vender.InsertMoney(50,2);
+            _vender.InsertMoney(50,2);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VendingMachine
+namespace VendingMachine.Products
 {
     public abstract class Product
     {
@@ -9,7 +9,7 @@ namespace VendingMachine
         protected string description;
         public string ExamineText;
 
-        protected Product(string name, int price, string description)
+        public Product(string name, int price, string description)
         {
             this.price = price;
             this.description = description;

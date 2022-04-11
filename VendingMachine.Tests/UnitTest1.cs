@@ -1,4 +1,5 @@
 using System;
+using VendingMachine.Products;
 using Xunit;
 using Xunit.Sdk;
 
@@ -72,36 +73,36 @@ namespace VendingMachine.Tests
         [Fact]
         public void Purchase_EnoughMoney()
         {
-            VendingMachine vendingMachine = new VendingMachine();
+            VendingMachine sut = new VendingMachine();
             
-            vendingMachine.InsertMoney(500,2);
-            var moneyBefore = vendingMachine.MoneyPool;
-            var product = vendingMachine.Purchase("twix");
+            sut.InsertMoney(500,2);
+            var moneyBefore = sut.MoneyPool;
+            var product = sut.Purchase("twix");
 
             Assert.NotNull(product);
-            Assert.Equal(moneyBefore - product.GetPrice(), vendingMachine.MoneyPool);
+            Assert.Equal(moneyBefore - product.GetPrice(), sut.MoneyPool);
         }
         
         [Fact]
         public void Purchase_NotEnoughMoney()
         {
-            VendingMachine vendingMachine = new VendingMachine();
+            VendingMachine sut = new VendingMachine();
             
-            vendingMachine.InsertMoney(1,2);
+            sut.InsertMoney(1,2);
             
-            var product = vendingMachine.Purchase("twix");
-            var resultArray  = vendingMachine.EndTransaction();
-            
+            var product = sut.Purchase("twix");
+
             Assert.Null(product);
         }
 
         [Fact]
         public void Examine_Product()
         {
-            VendingMachine vendingMachine = new VendingMachine();
-            vendingMachine.InsertMoney(1000,10);
-            var fanta = vendingMachine.Purchase("fanta");
-            fanta.Examine();
+            VendingMachine sut = new VendingMachine();
+            sut.InsertMoney(1000,10);
+            
+            var purchase = sut.Purchase("fanta");
+            Assert.NotSame(purchase.ExamineText, $"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}");
         }
         
     }
