@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VendingMachine
 {
     public class VendingMachine : IVending
     {
-        private static int[] acceptedDenominations = { 1,5,10,20,50,100,500,1000};
+        private readonly int[] _acceptedDenominations = { 1,5,10,20,50,100,500,1000};
         public int MoneyPool { get; private set; }
 
-        private List<Product> availableProducts = new List<Product>(){};
+        private static List<Product> availableProducts = new List<Product>(){};
 
         public void Purchase(Product p)
         {
@@ -16,12 +17,15 @@ namespace VendingMachine
 
         public void ShowAll()
         {
-            throw new System.NotImplementedException();
+            foreach (var product in availableProducts)
+            {
+                product.Examine();
+            }
         }
 
         public void InsertMoney(int currencyType, int amount)
         {
-            foreach (var denomination in acceptedDenominations)
+            foreach (var denomination in _acceptedDenominations)
             {
                 if (currencyType == denomination)
                 {
@@ -30,9 +34,23 @@ namespace VendingMachine
             }
         }
 
-        public void EndTransaction()
+        public int[] EndTransaction()
         {
-            
+            int[] returnDenomAmount = new int[_acceptedDenominations.Length];
+            //Check against largest denom first
+            for (int i = _acceptedDenominations.Length - 1; i >= 0; i--)
+            {
+                // If 
+                if ((MoneyPool / _acceptedDenominations[i]) >= 0)
+                {
+                    var denomAmount = Math.Floor((double) (MoneyPool / _acceptedDenominations[i]));
+                    
+                    returnDenomAmount[i] = (int) denomAmount;
+                    MoneyPool -= (int)(denomAmount * _acceptedDenominations[i]);
+                }
+
+            }
+            return returnDenomAmount;
         }
     }
 }

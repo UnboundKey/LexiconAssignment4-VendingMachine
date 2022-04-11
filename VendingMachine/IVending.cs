@@ -7,6 +7,6 @@ namespace VendingMachine
         void Purchase(Product p);
         void ShowAll();
         void InsertMoney(int currencyType, int amount);
-        void EndTransaction();
+        int[] EndTransaction();
     }
 }
