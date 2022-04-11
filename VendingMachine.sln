@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine", "VendingMachine\VendingMachine.csproj", "{50DA30F4-04A6-4430-8F48-A82E37AED27A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine.Tests", "VendingMachine.Tests\VendingMachine.Tests.csproj", "{2579B313-32BA-47DA-A6AB-77C0C939AC00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50DA30F4-04A6-4430-8F48-A82E37AED27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DA30F4-04A6-4430-8F48-A82E37AED27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DA30F4-04A6-4430-8F48-A82E37AED27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DA30F4-04A6-4430-8F48-A82E37AED27A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2579B313-32BA-47DA-A6AB-77C0C939AC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2579B313-32BA-47DA-A6AB-77C0C939AC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2579B313-32BA-47DA-A6AB-77C0C939AC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2579B313-32BA-47DA-A6AB-77C0C939AC00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
