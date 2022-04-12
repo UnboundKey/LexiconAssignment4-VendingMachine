@@ -35,7 +35,7 @@ namespace VendingMachine.Tests
         }
 
         [Fact]
-        public void EndTransaction_1000()
+        public void EndTransaction_5000()
         {
             //Set up
             VendingMachine vendingMachine = new VendingMachine();
