@@ -42,7 +42,7 @@ namespace VendingMachine
             string examineAllText = "";
             foreach (var product in _availableProducts)
             {
-                examineAllText += product.Examine();
+                examineAllText += product.Examine() + "\n";
             }
 
             return examineAllText;

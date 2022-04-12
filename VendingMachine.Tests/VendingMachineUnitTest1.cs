@@ -82,7 +82,7 @@ namespace VendingMachine.Tests
             Assert.NotNull(product);
             Assert.Equal(moneyBefore - product.GetPrice(), sut.MoneyPool);
         }
-        
+
         [Fact]
         public void Purchase_NotEnoughMoney()
         {
@@ -96,13 +96,33 @@ namespace VendingMachine.Tests
         }
 
         [Fact]
-        public void Examine_Product()
+        public void Examine_Product_ProductDrink()
         {
             VendingMachine sut = new VendingMachine();
             sut.InsertMoney(1000,10);
             
             var purchase = sut.Purchase("fanta");
-            Assert.NotSame(purchase.Examine(), $"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}");
+            Assert.NotSame($"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}",purchase.Examine());
+        }
+
+        [Fact]
+        public void Examine_Product_ProductCandy()
+        {
+            VendingMachine sut = new VendingMachine();
+            sut.InsertMoney(1000,10);
+            
+            var purchase = sut.Purchase("twix");
+            Assert.NotSame($"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}",purchase.Examine());
+        }
+        
+        [Fact]
+        public void Examine_Product_ProductTech()
+        {
+            VendingMachine sut = new VendingMachine();
+            sut.InsertMoney(1000,10);
+            
+            var purchase = sut.Purchase("iphone");
+            Assert.NotSame($"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}",purchase.Examine());
         }
     }
 }
