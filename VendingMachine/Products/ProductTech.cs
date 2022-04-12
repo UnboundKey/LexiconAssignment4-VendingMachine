@@ -6,7 +6,7 @@ namespace VendingMachine.Products
     {
         private string _brand;
         private string UseText;
-        private string ExamineText;
+        private new string ExamineText;
         public ProductTech(string name, int price, string description, string brand, string useText) : base(name, price, description)
         {
             _brand = brand;
@@ -19,10 +19,11 @@ namespace VendingMachine.Products
             Console.WriteLine(UseText);
         }
 
-        public override void Examine()
+        public override string Examine()
         {
             ExamineText = base.ExamineText + $", Brand: {_brand}";
             Console.WriteLine(ExamineText);
+            return ExamineText;
         }
     }
 }

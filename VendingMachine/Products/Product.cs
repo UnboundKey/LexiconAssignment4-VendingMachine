@@ -22,9 +22,10 @@ namespace VendingMachine.Products
             return price;
         }
 
-        public virtual void Examine()
+        public virtual string Examine()
         {
             Console.WriteLine(ExamineText);
+            return ExamineText;
         }
 
         public virtual void Use()

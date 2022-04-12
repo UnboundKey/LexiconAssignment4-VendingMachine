@@ -6,7 +6,7 @@ namespace VendingMachine.Products
     {
         private double _volume;
         private string UseText;
-        private string ExamineText;
+        private new string ExamineText;
         public ProductDrink(string name, int price, string description, double volume, string useText) : base(name, price, description)
         {
             _volume = volume;
@@ -19,10 +19,11 @@ namespace VendingMachine.Products
             Console.WriteLine(UseText);
         }
 
-        public override void Examine()
+        public override string Examine()
         {
             ExamineText = base.ExamineText + $", CL {_volume}";
             Console.WriteLine(ExamineText);
+            return ExamineText;
         }
     }
 }

@@ -6,39 +6,46 @@ namespace VendingMachine
 {
     public class VendingMachine : IVending
     {
-        private readonly int[] _acceptedDenominations = { 1,5,10,20,50,100,500,1000};
+        private readonly int[] _acceptedDenominations = {1, 5, 10, 20, 50, 100, 500, 1000};
         public int MoneyPool { get; private set; }
 
         private List<Product> _availableProducts = new List<Product>()
         {
-            new ProductCandy("Twix",12,"Twix Bar",50,"You eat one of the two twix bars"),
-            
-            new ProductTech("IPhone",1500,"This is the latest product from the apple","Apple","You called your mom"),
-            
-            new ProductDrink("Fanta", 15,"A sweet soft drink with an artificial orange flavour, from the coke company",33, "You Drunk the Fanta"),
+            new ProductCandy("Twix", 12, "Twix Bar", 50, "You eat one of the two twix bars"),
+
+            new ProductTech("IPhone", 1500, "This is the latest product from the apple", "Apple",
+                "You called your mom"),
+
+            new ProductDrink("Fanta", 15, "A sweet soft drink with an artificial orange flavour, from the coke company",
+                33, "You Drunk the Fanta"),
         };
 
         public Product Purchase(string productname)
         {
             foreach (Product product in _availableProducts)
             {
-                // Check if a product of a specific name exists and can be purchased.
+                // Check if a product of a specific name can be found and can be purchased.
                 if (productname.ToLower() == product.Name.ToLower() && MoneyPool >= product.GetPrice())
                 {
                     MoneyPool -= product.GetPrice();
                     return product;
                 }
             }
-            Console.WriteLine("Product could not be purchased, this might be because you might not have enough money or the product isn't available");
+
+            Console.WriteLine(
+                "Product could not be purchased, this might be because you might not have enough money or the product isn't available");
             return null;
         }
 
-        public void ShowAll()
+        public string ShowAll()
         {
+            string examineAllText = "";
             foreach (var product in _availableProducts)
             {
-                product.Examine();
+                examineAllText += product.Examine();
             }
+
+            return examineAllText;
         }
 
         public void InsertMoney(int currencyType, int amount)
@@ -66,9 +73,8 @@ namespace VendingMachine
                     // Store the denomination amount for later
                     returnDenomAmount[i] = (int) denomAmount;
                     // Remove the money counted from the MoneyPool
-                    MoneyPool -= (int)(denomAmount * _acceptedDenominations[i]);
+                    MoneyPool -= (int) (denomAmount * _acceptedDenominations[i]);
                 }
-
             }
 
             Console.WriteLine($"1s: {returnDenomAmount[0]}, " +

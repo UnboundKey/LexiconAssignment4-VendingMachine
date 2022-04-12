@@ -5,7 +5,7 @@ using Xunit.Sdk;
 
 namespace VendingMachine.Tests
 {
-    public class UnitTest1
+    public class VendingMachineUnitTest1
     {
         [Fact]
         public void InsertMoney_Valid_Denomination()
@@ -102,8 +102,7 @@ namespace VendingMachine.Tests
             sut.InsertMoney(1000,10);
             
             var purchase = sut.Purchase("fanta");
-            Assert.NotSame(purchase.ExamineText, $"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}");
+            Assert.NotSame(purchase.Examine(), $"Name: {purchase.Name}, Price: {purchase.GetPrice()}, Description: {purchase.ExamineText}");
         }
-        
     }
 }
